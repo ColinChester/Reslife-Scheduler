@@ -1,9 +1,9 @@
 import sqlite3
-connection = sqlite3.connect("first.db")
-cursor = connection.cursor()
+self.connection = sqlite3.connect("first.db")
+self.cursor = self.connection.self.cursor()
 class EmployeeSchedule:
     def __init__(self):
-        cursor.execute("""
+        self.cursor.execute("""
                 CREATE TABLE IF NOT EXISTS employeeSchedule (
                     schedule_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     employee_id INTEGER NOT NULL,
@@ -14,4 +14,4 @@ class EmployeeSchedule:
                     FOREIGN KEY (employee_id) REFERENCES employee_info(info_id)
                 );
         """)
-        connection.commit()
+        self.connection.commit()

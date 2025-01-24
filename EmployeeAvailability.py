@@ -1,11 +1,11 @@
 import sqlite3
 from datetime import datetime
 
-connection = sqlite3.connect("first.db")
-cursor = connection.cursor()
+self.connection = sqlite3.connect("first.db")
+self.cursor = self.connection.self.cursor()
 class EmployeeAvailability:
     def __init__(self):
-        cursor.execute("""
+        self.cursor.execute("""
                 CREATE TABLE IF NOT EXISTS employee_availability (
                     availability_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     employee_id INTEGER NOT NULL UNIQUE,
@@ -13,8 +13,7 @@ class EmployeeAvailability:
                     FOREIGN KEY (employee_id) REFERENCES employee_info(info_id)
                 );
         """)
-        connection.commit()
-       
+        self.connection.commit()
 # Able to add availibilities by day with occurences happening weekly
 # Use codes to represent day and time (9A2P1 - 9am-2pm Sunday)
 # SQLite doesn't have a list/array type so store a delimited string to store codes
