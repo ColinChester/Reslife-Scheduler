@@ -1,6 +1,6 @@
 import sqlite3
 
-class EmployeeSchedule:
+class EmployeeShifts:
     def __init__(self):
         self.connection = sqlite3.connect("first.db")
         self.cursor = self.connection.cursor

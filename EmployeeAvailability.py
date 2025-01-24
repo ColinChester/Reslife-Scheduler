@@ -15,6 +15,6 @@ class EmployeeAvailability:
         """)
         self.connection.commit()
 # Able to add availibilities by day with occurences happening weekly
-# Use codes to represent day and time (9A2P1 - 9am-2pm Sunday)
+# Use codes to represent day and time (900A200P1 - 9am-2pm Sunday)
 # SQLite doesn't have a list/array type so store a delimited string to store codes
 # On the front end user inputs DOW and time(s) unavailable, backend interprets this into code format
