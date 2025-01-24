@@ -1,10 +1,11 @@
 import sqlite3
-self.connection = sqlite3.connect("first.db")
-self.cursor = self.connection.self.cursor()
+
 class EmployeeSchedule:
     def __init__(self):
+        self.connection = sqlite3.connect("first.db")
+        self.cursor = self.connection.cursor
         self.cursor.execute("""
-                CREATE TABLE IF NOT EXISTS employeeSchedule (
+                    CREATE TABLE IF NOT EXISTS employeeSchedule (
                     schedule_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     employee_id INTEGER NOT NULL,
                     shift_day1 TEXT NOT NULL

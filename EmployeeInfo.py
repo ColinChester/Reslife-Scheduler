@@ -1,9 +1,9 @@
 import sqlite3
 class EmployeeInfo:
     def __init__(self):
-        self.self.connection = sqlite3.connect("first.db")
-        self.self.cursor = self.self.connection.self.cursor()
-        self.self.cursor.execute("""
+        self.connection = sqlite3.connect("first.db")
+        self.cursor = self.connection.cursor()
+        self.cursor.execute("""
                 CREATE TABLE IF NOT EXISTS employee_info (
                     info_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     first_name TEXT NOT NULL,

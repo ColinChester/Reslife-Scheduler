@@ -1,10 +1,10 @@
 import sqlite3
 from datetime import datetime
 
-self.connection = sqlite3.connect("first.db")
-self.cursor = self.connection.self.cursor()
 class EmployeeAvailability:
     def __init__(self):
+        self.connection = sqlite3.connect("first.db")
+        self.cursor = self.connection.cursor
         self.cursor.execute("""
                 CREATE TABLE IF NOT EXISTS employee_availability (
                     availability_id INTEGER PRIMARY KEY AUTOINCREMENT,
