@@ -12,7 +12,7 @@ class EmployeeShifts:
                     shift_day2 TEXT NOT NULL
                     start_time1 TEXT NOT NULL
                     shift_time TEXT NOT NULL,
-                    FOREIGN KEY (employee_id) REFERENCES employee_info(info_id)
+                    FOREIGN KEY (employee_id) REFERENCES employee_info(employee_id)
                 );
         """)
         self.connection.commit()

@@ -5,7 +5,7 @@ class EmployeeInfo:
         self.cursor = self.connection.cursor()
         self.cursor.execute("""
                 CREATE TABLE IF NOT EXISTS employee_info (
-                    info_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    employee_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     first_name TEXT NOT NULL,
                     last_name TEXT NOT NULL,
                     email TEXT NOT NULL UNIQUE,

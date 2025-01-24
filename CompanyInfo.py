@@ -16,9 +16,24 @@ class CompanyInfo:
     
     def __getInfo(self):
         translatedHours = ''
+        symbols = ":-"
+        days = ['s', 'm', 't', 'w', 't', 'f']
         name = input('What is the name of your company? ').strip()
-        hours = input('What are your business hours? Use dashes for ranges and commas to separate ranges. (Ex. 9:00am-3:25pm, 5:42pm-8:00pm) ').lower()
-        self.cursor.execute("SELECT company_id FROM company_info LIMIT 1")
+        hours = list(input('What are your business hours? Use a/p for AM and PM, dashes for ranges and commas to separate ranges. (Ex. Sunday 9:00a-3:25p, Monday 5:42p-8:00p) ').replace(" ", '').lower())
+        for digit in range(len(hours)):
+            if hours[digit] in symbols:
+                pass
+            elif hours[digit] in days:
+                if hours[digit] == 's' and hours[digit + 1] != 'd':
+                    if hours[digit + 1] == 'u':
+                        translatedHours += '1'
+                    else:
+                        translatedHours += '7'
+                elif hours[digit] == 't':
+                    if hours[digit + 2] == 'e':
+                        translatedHours += '3'
+            else:
+                translatedHours += str(days.index(hours[digit]))
         self.cursor.execute("""
                     INSERT INTO company_info (company_name, business_hours)
                         VALUES (?, ?)
@@ -26,3 +41,6 @@ class CompanyInfo:
                     (name, hours))
 
         self.connection.commit()
+
+        # s Tuesday Wednesday Thursday
+        # t Saturday
