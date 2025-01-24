@@ -1,4 +1,6 @@
 import sqlite3
+from datetime import datetime
+
 connection = sqlite3.connect("first.db")
 cursor = connection.cursor()
 class EmployeeAvailability:
@@ -7,34 +9,13 @@ class EmployeeAvailability:
                 CREATE TABLE IF NOT EXISTS employee_availability (
                     availability_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     employee_id INTEGER NOT NULL UNIQUE,
-                    monday TEXT NOT NULL,
-                    tuesday TEXT NOT NULL,
-                    wednesday TEXT NOT NULL,
-                    thursday TEXT NOT NULL,
-                    friday TEXT NOT NULL,
+                    day_and_time TEXT NOT NULL,
                     FOREIGN KEY (employee_id) REFERENCES employee_info(info_id)
                 );
         """)
         connection.commit()
-    
-    def addAvailability(self, day):
-        times = ['10-11', '11-12', '12-1', '1-2', '2-3', '3-4', '4-5']
-        unavailableTimes = ''
-        shifts = input('Enter the block of time(s) during which this person is unavailable seperated by commas. Ex. 9-10, 10-11 ').split(", ")
-        for timesIndex in range(len(times)):
-            for occupiedTimes in shifts:
-                if occupiedTimes == times[timesIndex]:
-                    times.pop(timesIndex)
-        for i in range(len(timesIndex)):
-            if i < len(timesIndex)-1:
-                unavailableTimes += f'{i}, '
-            else:
-                unavailableTimes += i
-        cursor.execute("""
-                    INSERT INTO employee_availability (day, )
-                    VALUES (?);
-                    """,
-                    (day.lower(), unavailableTimes))
-        connection.commit()
-        return True
-    # currently debugging addAvailability, fixing the loop, and making it so user can edit per day
+       
+# Able to add availibilities by day with occurences happening weekly
+# Use codes to represent day and time (9A2P1 - 9am-2pm Sunday)
+# SQLite doesn't have a list/array type so store a delimited string to store codes
+# On the front end user inputs DOW and time(s) unavailable, backend interprets this into code format
